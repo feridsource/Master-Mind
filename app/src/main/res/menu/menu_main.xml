@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.ferid.app.mastermind.MainActivity">
+
+    <item
+        android:id="@+id/action_new_game"
+        android:orderInCategory="1"
+        android:title="@string/new_game"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_learn_playing"
+        android:orderInCategory="2"
+        android:title="@string/how_to_play"
+        app:showAsAction="never"/>
+</menu>

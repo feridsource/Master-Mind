@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true">
+
+    <TextView
+        android:id="@+id/chanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:textSize="18sp"
+        android:textColor="@color/secondaryTextColor"
+        style="@style/TextViewFontFamily"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:weightSum="10"
+        android:layout_margin="@dimen/default_margin"
+        android:background="@color/white"
+        android:elevation="4dp">
+
+        <LinearLayout
+            android:id="@+id/chancesLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/hole1"
+                android:layout_width="@dimen/hole_size"
+                android:layout_height="@dimen/hole_size"
+                android:layout_margin="@dimen/hole_margin"
+                android:src="@drawable/circle"/>
+
+            <ImageView
+                android:id="@+id/hole2"
+                android:layout_width="@dimen/hole_size"
+                android:layout_height="@dimen/hole_size"
+                android:layout_margin="@dimen/hole_margin"
+                android:src="@drawable/circle"/>
+
+            <ImageView
+                android:id="@+id/hole3"
+                android:layout_width="@dimen/hole_size"
+                android:layout_height="@dimen/hole_size"
+                android:layout_margin="@dimen/hole_margin"
+                android:src="@drawable/circle"/>
+
+            <ImageView
+                android:id="@+id/hole4"
+                android:layout_width="@dimen/hole_size"
+                android:layout_height="@dimen/hole_size"
+                android:layout_margin="@dimen/hole_margin"
+                android:src="@drawable/circle"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/darkGrey"/>
+
+        <LinearLayout
+            android:id="@+id/resultLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_done"
+                app:elevation="4dp"
+                app:fabSize="mini"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
