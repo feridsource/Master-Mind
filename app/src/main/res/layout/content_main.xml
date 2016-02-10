@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/currentChance"
         android:background="@color/lightGrey"
-        android:paddingBottom="@dimen/banner_height"
         android:clipToPadding="false"/>
 
     <View
