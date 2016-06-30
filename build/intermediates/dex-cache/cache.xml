@@ -2,53 +2,67 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\vito\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_f95bc72972616dba762f2c2648518dd0f69c6c10.jar" />
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.3.0_cb00160f401622f67064ada5ed156991bd88e995.jar" />
     </item>
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.1\jars\classes.jar"
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.1.1_5793accc7337936b8834ba303c30b314f97cbbce.jar" />
+        revision="23.0.3"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.3.0_967eb8ff7c8e8071d657d07a6882453d24b74fd2.jar" />
     </item>
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_282266e7c1b4c6ca77f005375fecde7b8c00e99a.jar" />
+        revision="23.0.3"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.3.0_249bb1ada181cb5d43551cfec0e9af6d2dda9562.jar" />
     </item>
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_cb85737f2839dbc9700bd484910ad2c7bc305235.jar" />
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\internal_impl-23.3.0_b261fba55dc22d584a1d61ac8c7edde67f7058e7.jar" />
     </item>
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_246055ad17e9e5c78dd62c44c44069d02f5aaa8c.jar" />
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.3.0_7c5664c8688298fe39af0b4a718976a14f601444.jar" />
     </item>
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_33fe460f856399dcd38fb3b991a303bbe1264090.jar" />
+        revision="23.0.3"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.3.0_44cc1996f21a8b14fc3f3440991cda91a0fa8727.jar" />
     </item>
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jar="C:\Users\vito\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
         jumboMode="false"
-        revision="23.0.2"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_4b555d581db242ce6baccf9b00a6c460115dfa81.jar" />
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\support-annotations-23.3.0_734d58162ac5c08ff4c9355a226441c7d49f30a6.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.3.0_8c5ae389a41a034db80eb00fec7771dc45732c98.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.3.0_dbed1abcb6f51912bfa0503bd15be20b4e19fcca.jar" />
     </item>
 
 </items>

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -30,6 +31,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,27 +49,34 @@ import java.util.ArrayList;
  * Created by Ferid Cafer on 12/17/2015.
  */
 public class MainActivity extends AppCompatActivity {
-    private Context context;
+    private Context mContext;
 
-    private RecyclerView recyclerView;
-    private ArrayList<Chance> chanceList = new ArrayList<>();
-    private ChanceAdapter adapter;
+    private RecyclerView mRecyclerView;
+    private ArrayList<Chance> mChanceList = new ArrayList<>();
+    private ChanceAdapter mAdapter;
 
-    private TextView chanceText;
-    private ImageView hole1;
-    private ImageView hole2;
-    private ImageView hole3;
-    private ImageView hole4;
+    private TextView mChanceText;
+    private ImageView mHole1;
+    private ImageView mHole2;
+    private ImageView mHole3;
+    private ImageView mHole4;
 
-    private Chance chance;
-    private int stepNumber = 1;
-    private boolean isCombinationFound = false; //is the game won
+    private Chance mChance;
+    private int mStepNumber = 1;
+    private boolean mIsCombinationFound = false; //is the game won
 
-    //game chance decision
-    private DeviceActionManager deviceActionManager;
-    private PlayerActionManager playerActionManager;
-    private int numberOfBlack = 0; //concretely found ones
-    private int numberOfGrey = 0;  //found only colour but not position
+    //game mChance decision
+    private DeviceActionManager mDeviceActionManager;
+    private PlayerActionManager mPlayerActionManager;
+    private int mNumberOfBlack = 0; //concretely found ones
+    private int mNumberOfGrey = 0;  //found only colour but not position
+
+    //stop-watch
+    private Chronometer mChronometer;
+    private long mTimeWhenStopped = 0;
+
+    //empty text
+    private TextView mEmptyText;
 
 
     @Override
@@ -75,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        context = this;
+        mContext = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -84,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         initialiseRecyclerView();
 
-        initialiseCurrentChanceItem();
+        initialiseRemainingChanceItem();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -110,43 +119,70 @@ public class MainActivity extends AppCompatActivity {
      * Initialise action managers to start the game
      */
     private void initialiseActionManagers() {
-        chance = new Chance();
-        deviceActionManager = new DeviceActionManager();
-        playerActionManager = new PlayerActionManager();
+        mChance = new Chance();
+        mDeviceActionManager = new DeviceActionManager();
+        mPlayerActionManager = new PlayerActionManager();
     }
 
-    private void initialiseCurrentChanceItem(){
-        chanceText = (TextView) findViewById(R.id.chanceText);
-        hole1 = (ImageView) findViewById(R.id.hole1);
-        hole2 = (ImageView) findViewById(R.id.hole2);
-        hole3 = (ImageView) findViewById(R.id.hole3);
-        hole4 = (ImageView) findViewById(R.id.hole4);
+    private void initialiseRemainingChanceItem(){
+        mChanceText = (TextView) findViewById(R.id.chanceText);
+        mHole1 = (ImageView) findViewById(R.id.hole1);
+        mHole2 = (ImageView) findViewById(R.id.hole2);
+        mHole3 = (ImageView) findViewById(R.id.hole3);
+        mHole4 = (ImageView) findViewById(R.id.hole4);
+        mEmptyText = (TextView) findViewById(R.id.emptyText);
 
-        chanceText.setText(getString(R.string.find_combination));
-        hole1.setOnClickListener(new View.OnClickListener() {
+        setRemainingChanceText();
+        setEmptyText();
+
+        mHole1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askForColour(hole1, 0);
+                askForColour(mHole1, 0);
             }
         });
-        hole2.setOnClickListener(new View.OnClickListener() {
+        mHole2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askForColour(hole2, 1);
+                askForColour(mHole2, 1);
             }
         });
-        hole3.setOnClickListener(new View.OnClickListener() {
+        mHole3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askForColour(hole3, 2);
+                askForColour(mHole3, 2);
             }
         });
-        hole4.setOnClickListener(new View.OnClickListener() {
+        mHole4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askForColour(hole4, 3);
+                askForColour(mHole4, 3);
             }
         });
+
+        mChronometer = (Chronometer) findViewById(R.id.chronometer);
+        mChronometer.start();
+    }
+
+    /**
+     * Display the remaining mChance
+     */
+    private void setRemainingChanceText() {
+        mChanceText.setText(getString(R.string.step) + String.valueOf(mStepNumber) + "/"
+                + getResources().getInteger(R.integer.max_step));
+    }
+
+    /**
+     * Set empty list text
+     */
+    private void setEmptyText() {
+        if (mEmptyText != null) {
+            if (mChanceList.isEmpty()) {
+                mEmptyText.setVisibility(View.VISIBLE);
+            } else {
+                mEmptyText.setVisibility(View.GONE);
+            }
+        }
     }
 
     /**
@@ -155,11 +191,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private void askForColour(final ImageView hole, final int holeNumber) {
         if (!isGameOver()) {
-            ColourDialog colourDialog = new ColourDialog(context);
+            ColourDialog colourDialog = new ColourDialog(mContext);
             colourDialog.setOnColourSelectionListener(new ColourSelectionListener() {
                 @Override
                 public void OnColourSelected(SelectedColour selectedColour) {
-                    playerActionManager.setHole(holeNumber, selectedColour);
+                    mPlayerActionManager.setHole(holeNumber, selectedColour);
 
                     setSelectedColour(selectedColour.getValue(), hole, holeNumber);
                 }
@@ -181,10 +217,10 @@ public class MainActivity extends AppCompatActivity {
      * @param holeNumber
      */
     private void setUnselectColour(ImageView hole, int holeNumber) {
-        playerActionManager.setHole(holeNumber, null);
+        mPlayerActionManager.setHole(holeNumber, null);
 
         hole.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        chance.setChanceColourId(holeNumber, R.drawable.circle);
+        mChance.setChanceColourId(holeNumber, R.drawable.circle);
     }
 
     /**
@@ -198,47 +234,47 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_red));
                 if (holeNumber >= 0) {
-                    chance.setChanceColourId(holeNumber, R.drawable.circle_red);
+                    mChance.setChanceColourId(holeNumber, R.drawable.circle_red);
                 }
                 break;
             case 1:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_orange));
                 if (holeNumber >= 0) {
-                    chance.setChanceColourId(holeNumber, R.drawable.circle_orange);
+                    mChance.setChanceColourId(holeNumber, R.drawable.circle_orange);
                 }
                 break;
             case 2:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_yellow));
                 if (holeNumber >= 0) {
-                    chance.setChanceColourId(holeNumber, R.drawable.circle_yellow);
+                    mChance.setChanceColourId(holeNumber, R.drawable.circle_yellow);
                 }
                 break;
             case 3:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_green));
                 if (holeNumber >= 0) {
-                    chance.setChanceColourId(holeNumber, R.drawable.circle_green);
+                    mChance.setChanceColourId(holeNumber, R.drawable.circle_green);
                 }
                 break;
             case 4:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_blue));
                 if (holeNumber >= 0) {
-                    chance.setChanceColourId(holeNumber, R.drawable.circle_blue);
+                    mChance.setChanceColourId(holeNumber, R.drawable.circle_blue);
                 }
                 break;
             case 5:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_purple));
                 if (holeNumber >= 0) {
-                    chance.setChanceColourId(holeNumber, R.drawable.circle_purple);
+                    mChance.setChanceColourId(holeNumber, R.drawable.circle_purple);
                 }
                 break;
         }
     }
 
     private void initialiseRecyclerView() {
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new ChanceAdapter(context, chanceList);
-        recyclerView.setAdapter(adapter);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mAdapter = new ChanceAdapter(mContext, mChanceList);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     /**
@@ -246,8 +282,8 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private boolean isAllSelected() {
-        for (int i = 0; i < chance.getChanceColourIds().length; i++) {
-            int selectedColourId = chance.getChanceColourIds()[i];
+        for (int i = 0; i < mChance.getChanceColourIds().length; i++) {
+            int selectedColourId = mChance.getChanceColourIds()[i];
             if (selectedColourId == R.drawable.circle) {
                 return false;
             }
@@ -261,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private boolean isGameOver() {
-        if (chanceList.size() > 9 || isCombinationFound) {
+        if (mChanceList.size() >= getResources().getInteger(R.integer.max_step) || mIsCombinationFound) {
             return true;
         } else {
             return false;
@@ -269,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showMessage(String message) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         //message
         builder.setMessage(message);
         //create and show
@@ -278,34 +314,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Compare and decide on the player's current game chance
+     * Compare and decide on the player's remaining game mChance
      */
     private void makeDecision() {
         ArrayList<Integer> blackIndices = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            SelectedColour playerSelectedColour = playerActionManager.getHoles()[i];
-            SelectedColour deviceSelectedColour = deviceActionManager.getHoles()[i];
+        for (int i = 0; i < getResources().getInteger(R.integer.holes_number); i++) {
+            SelectedColour playerSelectedColour = mPlayerActionManager.getHoles()[i];
+            SelectedColour deviceSelectedColour = mDeviceActionManager.getHoles()[i];
 
             if (playerSelectedColour == deviceSelectedColour) {
                 blackIndices.add(i);
 
-                numberOfBlack++;
+                mNumberOfBlack++;
             }
         }
 
         ArrayList<Integer> greyIndices = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < getResources().getInteger(R.integer.holes_number); i++) {
             if (!blackIndices.contains(i)) {
-                SelectedColour playerSelectedColour = playerActionManager.getHoles()[i];
+                SelectedColour playerSelectedColour = mPlayerActionManager.getHoles()[i];
 
-                for (int j = 0; j < 4; j++) {
+                for (int j = 0; j < getResources().getInteger(R.integer.holes_number); j++) {
                     if (!blackIndices.contains(j) && !greyIndices.contains(j)) {
-                        SelectedColour deviceSelectedColour = deviceActionManager.getHoles()[j];
+                        SelectedColour deviceSelectedColour = mDeviceActionManager.getHoles()[j];
 
                         if (i != j && playerSelectedColour == deviceSelectedColour) {
                             greyIndices.add(j);
 
-                            numberOfGrey++;
+                            mNumberOfGrey++;
 
                             break;
                         }
@@ -321,66 +357,67 @@ public class MainActivity extends AppCompatActivity {
      * After making decision
      */
     private void setResultColours() {
-        int resultForBlacks = numberOfBlack;
-        int resultForGreys = numberOfGrey;
+        int resultForBlacks = mNumberOfBlack;
+        int resultForGreys = mNumberOfGrey;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < getResources().getInteger(R.integer.holes_number); i++) {
             if (resultForBlacks > 0) {
-                chance.setResultColourId(i, R.drawable.circle_black);
+                mChance.setResultColourId(i, R.drawable.circle_black);
 
                 resultForBlacks--;
             } else {
                 if (resultForGreys > 0) {
-                    chance.setResultColourId(i, R.drawable.circle_grey);
+                    mChance.setResultColourId(i, R.drawable.circle_grey);
 
                     resultForGreys--;
                 } else {
-                    chance.setResultColourId(i, R.drawable.circle);
+                    mChance.setResultColourId(i, R.drawable.circle);
                 }
             }
         }
 
-        chanceList.add(0, chance);
-        adapter.notifyDataSetChanged();
+        mChanceList.add(0, mChance);
+        mAdapter.notifyDataSetChanged();
 
-        if (numberOfBlack == 4) {
+        if (mNumberOfBlack == getResources().getInteger(R.integer.holes_number)) {
             showMessage(getString(R.string.you_won));
 
-            chanceText.setText(getString(R.string.you_found_in)
-                    + stepNumber + getString(R.string.steps));
+            mChanceText.setText(getString(R.string.you_found_in)
+                    + String.valueOf(mStepNumber) + getString(R.string.steps));
 
-            isCombinationFound = true;
+            mIsCombinationFound = true;
+
+            mChronometer.stop();
         } else if (isGameOver()) {
             showMessage(getString(R.string.game_over));
 
             showActualColours();
+
+            mChronometer.stop();
         } else {
-            if (stepNumber <= 10) {
-                stepNumber++;
+            if (mStepNumber <= getResources().getInteger(R.integer.max_step)) {
+                mStepNumber++;
             }
 
-            clearCurrentChance();
+            clearRemainingChance();
         }
     }
 
     /**
-     * Clear the colours of the player's current game chance
+     * Clear the colours of the player's remaining game mChance
      */
-    private void clearCurrentChance() {
-        chance = new Chance();
-        numberOfBlack = 0;
-        numberOfGrey = 0;
+    private void clearRemainingChance() {
+        mChance = new Chance();
+        mNumberOfBlack = 0;
+        mNumberOfGrey = 0;
 
-        hole1.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        hole2.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        hole3.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        hole4.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        mHole1.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        mHole2.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        mHole3.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        mHole4.setImageDrawable(getResources().getDrawable(R.drawable.circle));
 
-        if (stepNumber == 1) {
-            chanceText.setText(getString(R.string.find_combination));
-        } else if (stepNumber > 1 && stepNumber <= 10) {
-            chanceText.setText(String.valueOf(stepNumber));
-        }
+        setRemainingChanceText();
+        setEmptyText();
     }
 
     /**
@@ -389,26 +426,52 @@ public class MainActivity extends AppCompatActivity {
     private void setNewGame() {
         initialiseActionManagers();
 
-        isCombinationFound = false;
-        stepNumber = 1;
+        mIsCombinationFound = false;
+        mStepNumber = 1;
 
-        clearCurrentChance();
+        mChanceList.clear();
+        mAdapter.notifyDataSetChanged();
 
-        chanceList.clear();
-        adapter.notifyDataSetChanged();
+        clearRemainingChance();
+
+        mChronometer.setBase(SystemClock.elapsedRealtime());
+        mChronometer.start();
     }
 
     /**
      * When the game is lost, show the machine's combination
      */
     private void showActualColours() {
-        SelectedColour[] selectedColours = deviceActionManager.getHoles();
-        setSelectedColour(selectedColours[0].getValue(), hole1, -1);
-        setSelectedColour(selectedColours[1].getValue(), hole2, -1);
-        setSelectedColour(selectedColours[2].getValue(), hole3, -1);
-        setSelectedColour(selectedColours[3].getValue(), hole4, -1);
+        SelectedColour[] selectedColours = mDeviceActionManager.getHoles();
+        setSelectedColour(selectedColours[0].getValue(), mHole1, -1);
+        setSelectedColour(selectedColours[1].getValue(), mHole2, -1);
+        setSelectedColour(selectedColours[2].getValue(), mHole3, -1);
+        setSelectedColour(selectedColours[3].getValue(), mHole4, -1);
 
-        chanceText.setText(getString(R.string.machine_combination));
+        mChanceText.setText(getString(R.string.machine_combination));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //if game is not over, continue to count
+        if (mChronometer != null && !isGameOver()) {
+            mChronometer.setBase(SystemClock.elapsedRealtime() + mTimeWhenStopped);
+
+            mChronometer.start();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (mChronometer != null) {
+            mTimeWhenStopped = mChronometer.getBase() - SystemClock.elapsedRealtime();
+
+            mChronometer.stop();
+        }
+
+        super.onPause();
     }
 
     @Override
@@ -426,7 +489,7 @@ public class MainActivity extends AppCompatActivity {
             setNewGame();
             return true;
         } else if (id == R.id.action_learn_playing) {
-            Intent intent = new Intent(context, LearnPlayingActivity.class);
+            Intent intent = new Intent(mContext, LearnPlayingActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.move_in_from_bottom, R.anim.stand_still);
             return true;

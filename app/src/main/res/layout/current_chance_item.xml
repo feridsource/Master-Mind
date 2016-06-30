@@ -6,15 +6,33 @@
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true">
 
-    <TextView
-        android:id="@+id/chanceText"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"
-        android:textSize="18sp"
-        android:textColor="@color/secondaryTextColor"
-        style="@style/TextViewFontFamily"/>
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin">
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="4dp"
+            android:textSize="18sp"
+            android:textColor="@color/secondaryTextColor"
+            style="@style/TextViewFontFamily"/>
+
+        <TextView
+            android:id="@+id/chanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="4dp"
+            android:textSize="18sp"
+            android:textColor="@color/secondaryTextColor"
+            style="@style/TextViewFontFamily"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"

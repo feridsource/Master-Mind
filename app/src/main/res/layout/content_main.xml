@@ -17,6 +17,14 @@
         android:background="@color/lightGrey"
         android:clipToPadding="false"/>
 
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        style="@style/EmptyText"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"

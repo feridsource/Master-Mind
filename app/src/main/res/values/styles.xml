@@ -16,4 +16,14 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="EmptyText" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:text">@string/find_combination</item>
+        <item name="android:layout_margin">@dimen/default_margin</item>
+    </style>
+
 </resources>
