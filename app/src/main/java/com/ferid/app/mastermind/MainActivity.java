@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
-        mChronometer.start();
+        if (mChronometer != null) mChronometer.start();
     }
 
     /**

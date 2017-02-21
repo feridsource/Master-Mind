@@ -54,6 +54,7 @@ public class LearnPlayingActivity extends AppCompatActivity {
      */
     private void startLoading() {
         WebView webView = (WebView) findViewById(R.id.webView);
+        assert webView != null;
         webView.setWebViewClient(new MyWebViewClient());
         webView.loadUrl("http://www.industrious.com/mastermind/gamerules.html");
         webView.getSettings().setBuiltInZoomControls(true);
