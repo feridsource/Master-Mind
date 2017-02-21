@@ -2,67 +2,103 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.3.0_cb00160f401622f67064ada5ed156991bd88e995.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.3.0_967eb8ff7c8e8071d657d07a6882453d24b74fd2.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="debf30ce0a7560396b6235edef77e447006454c2">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.3.0_249bb1ada181cb5d43551cfec0e9af6d2dda9562.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\internal_impl-23.3.0_b261fba55dc22d584a1d61ac8c7edde67f7058e7.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.3.0_7c5664c8688298fe39af0b4a718976a14f601444.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.3.0_44cc1996f21a8b14fc3f3440991cda91a0fa8727.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\support-annotations-23.3.0_734d58162ac5c08ff4c9355a226441c7d49f30a6.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.3.0_8c5ae389a41a034db80eb00fec7771dc45732c98.jar" />
-    </item>
-    <item
-        jar="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.3"
         sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="C:\Users\vito\AndroidStudioProjects\Master-Mind\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.3.0_dbed1abcb6f51912bfa0503bd15be20b4e19fcca.jar" />
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_f49ff81e45238e671a9f8f805e2b1050a6a35827\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_ea1b42388388d6d2ce51ce81ddab8bc809482fcf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_f931484e06305c73acd47af699d6bc2e96554848\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="6c26ed0a72c117d00ce87e25045e78bcf8a67972">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_3de7ecb90af8ca5ff9457d9253bc93434b19d468\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_f04d6237e987e2f189faa410a070e109bb25b40d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.3.0_69b7b1bffab70f1e83cf0435f5432acd5160f069\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.3.0_a5d550c5117dd50a9f9226931d504d16cb5a777f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="093b14ffa04c072fd146426f658a618eb838bf1c">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_4d4f42965f211202804e20a56f12994ae725de3d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.3.0_79f0845df41a6f4d9cd63f973d5574ba17980016\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_76a4e2572ce4562d33dc121c7f8fb72ac02fef27\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Master-Mind\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_d91c7736e33d475ded7af7b22fc25ce8654379ce\classes.dex" />
     </item>
 
 </items>

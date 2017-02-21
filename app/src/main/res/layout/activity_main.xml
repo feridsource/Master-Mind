@@ -3,15 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            layout="@layout/toolbar"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navigationLayout">
 
         <include layout="@layout/content_main"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/navigationLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding"
+        android:background="@color/white"
+        android:elevation="@dimen/elevation"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/buttonHowToPlay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/how_to_play"/>
+
+        <Button
+            android:id="@+id/buttonNewGame"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/new_game"/>
 
     </LinearLayout>
 

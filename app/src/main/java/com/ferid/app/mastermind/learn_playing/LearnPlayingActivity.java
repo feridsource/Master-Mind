@@ -17,10 +17,11 @@
 package com.ferid.app.mastermind.learn_playing;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -36,13 +37,14 @@ public class LearnPlayingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //full screen
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.learn_playing);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
         startLoading();
     }
@@ -51,9 +53,6 @@ public class LearnPlayingActivity extends AppCompatActivity {
      * Start loading URL within the web view
      */
     private void startLoading() {
-        progressDialog = ProgressDialog.show(this, getString(R.string.loading),
-                getString(R.string.process_ongoing), true, true);
-
         WebView webView = (WebView) findViewById(R.id.webView);
         webView.setWebViewClient(new MyWebViewClient());
         webView.loadUrl("http://www.industrious.com/mastermind/gamerules.html");
@@ -62,6 +61,12 @@ public class LearnPlayingActivity extends AppCompatActivity {
     }
 
     private class MyWebViewClient extends WebViewClient {
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            progressDialog = ProgressDialog.show(LearnPlayingActivity.this, getString(R.string.loading),
+                    getString(R.string.process_ongoing), true, true);
+        }
 
         @Override
         public void onPageFinished(WebView view, String url) {
@@ -77,17 +82,5 @@ public class LearnPlayingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         closeWindow();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar actions click
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                closeWindow();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

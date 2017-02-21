@@ -27,10 +27,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -82,12 +82,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //full screen
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
-        mContext = this;
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mContext = this;
 
         initialiseActionManagers();
 
@@ -111,6 +115,24 @@ public class MainActivity extends AppCompatActivity {
 
                 //otherwise make decision
                 makeDecision();
+            }
+        });
+
+        Button buttonHowToPlay = (Button) findViewById(R.id.buttonHowToPlay);
+        buttonHowToPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, LearnPlayingActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.move_in_from_bottom, R.anim.stand_still);
+            }
+        });
+
+        Button buttonNewGame = (Button) findViewById(R.id.buttonNewGame);
+        buttonNewGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNewGame();
             }
         });
     }
@@ -474,27 +496,4 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_new_game) {
-            setNewGame();
-            return true;
-        } else if (id == R.id.action_learn_playing) {
-            Intent intent = new Intent(mContext, LearnPlayingActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.move_in_from_bottom, R.anim.stand_still);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -18,6 +18,5 @@
     <color name="colorPrimaryDark">#455A64</color>
     <color name="colorAccent">#607D8B</color>
 
-    <color name="primaryTextColor">@color/blackish</color>
     <color name="secondaryTextColor">@color/darkGrey</color>
 </resources>

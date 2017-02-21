@@ -7,4 +7,5 @@
     <dimen name="result_circle_margin">3dp</dimen>
     <dimen name="hole_margin">15dp</dimen>
     <dimen name="hole_size">64dp</dimen>
+
 </resources>
