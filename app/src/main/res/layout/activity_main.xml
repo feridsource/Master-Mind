@@ -18,8 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingTop="@dimen/small_padding"
-        android:paddingBottom="@dimen/small_padding"
+        android:padding="@dimen/tiny_padding"
         android:background="@color/white"
         android:elevation="@dimen/elevation"
         android:weightSum="2">
@@ -29,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="@color/colorPrimary"
             android:text="@string/how_to_play"/>
 
@@ -38,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="@color/colorPrimary"
             android:text="@string/new_game"/>
 
