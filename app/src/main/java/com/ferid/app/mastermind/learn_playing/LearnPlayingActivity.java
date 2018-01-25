@@ -53,7 +53,7 @@ public class LearnPlayingActivity extends AppCompatActivity {
      * Start loading URL within the web view
      */
     private void startLoading() {
-        WebView webView = (WebView) findViewById(R.id.webView);
+        WebView webView = findViewById(R.id.webView);
         assert webView != null;
         webView.setWebViewClient(new MyWebViewClient());
         webView.loadUrl("http://www.industrious.com/mastermind/gamerules.html");

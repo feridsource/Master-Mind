@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:background">@color/white</item>
 
         <item name="android:dialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
     </style>
@@ -24,6 +25,7 @@
         <item name="android:singleLine">false</item>
         <item name="android:text">@string/find_combination</item>
         <item name="android:layout_margin">@dimen/default_margin</item>
+        <item name="android:background">@color/lightGrey</item>
     </style>
 
 </resources>

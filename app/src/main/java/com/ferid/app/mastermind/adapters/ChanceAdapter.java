@@ -81,15 +81,15 @@ public class ChanceAdapter extends RecyclerView.Adapter<ChanceAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            hole1 = (ImageView) itemView.findViewById(R.id.hole1);
-            hole2 = (ImageView) itemView.findViewById(R.id.hole2);
-            hole3 = (ImageView) itemView.findViewById(R.id.hole3);
-            hole4 = (ImageView) itemView.findViewById(R.id.hole4);
+            hole1 = itemView.findViewById(R.id.hole1);
+            hole2 = itemView.findViewById(R.id.hole2);
+            hole3 = itemView.findViewById(R.id.hole3);
+            hole4 = itemView.findViewById(R.id.hole4);
 
-            result1 = (ImageView) itemView.findViewById(R.id.result1);
-            result2 = (ImageView) itemView.findViewById(R.id.result2);
-            result3 = (ImageView) itemView.findViewById(R.id.result3);
-            result4 = (ImageView) itemView.findViewById(R.id.result4);
+            result1 = itemView.findViewById(R.id.result1);
+            result2 = itemView.findViewById(R.id.result2);
+            result3 = itemView.findViewById(R.id.result3);
+            result4 = itemView.findViewById(R.id.result4);
         }
     }
 }

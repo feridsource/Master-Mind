@@ -51,7 +51,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private Context mContext;
 
-    private RecyclerView mRecyclerView;
     private ArrayList<Chance> mChanceList = new ArrayList<>();
     private ChanceAdapter mAdapter;
 
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         initialiseRemainingChanceItem();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonHowToPlay = (Button) findViewById(R.id.buttonHowToPlay);
+        Button buttonHowToPlay = findViewById(R.id.buttonHowToPlay);
         buttonHowToPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonNewGame = (Button) findViewById(R.id.buttonNewGame);
+        Button buttonNewGame = findViewById(R.id.buttonNewGame);
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,12 +146,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialiseRemainingChanceItem(){
-        mChanceText = (TextView) findViewById(R.id.chanceText);
-        mHole1 = (ImageView) findViewById(R.id.hole1);
-        mHole2 = (ImageView) findViewById(R.id.hole2);
-        mHole3 = (ImageView) findViewById(R.id.hole3);
-        mHole4 = (ImageView) findViewById(R.id.hole4);
-        mEmptyText = (TextView) findViewById(R.id.emptyText);
+        mChanceText = findViewById(R.id.chanceText);
+        mHole1 = findViewById(R.id.hole1);
+        mHole2 = findViewById(R.id.hole2);
+        mHole3 = findViewById(R.id.hole3);
+        mHole4 = findViewById(R.id.hole4);
+        mEmptyText = findViewById(R.id.emptyText);
 
         setRemainingChanceText();
         setEmptyText();
@@ -182,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mChronometer = (Chronometer) findViewById(R.id.chronometer);
+        mChronometer = findViewById(R.id.chronometer);
         if (mChronometer != null) mChronometer.start();
     }
 
@@ -293,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialiseRecyclerView() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mAdapter = new ChanceAdapter(mContext, mChanceList);
         mRecyclerView.setAdapter(mAdapter);

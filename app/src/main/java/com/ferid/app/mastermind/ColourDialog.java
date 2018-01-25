@@ -29,25 +29,18 @@ import com.ferid.app.mastermind.interfaces.ColourSelectionListener;
  */
 public class ColourDialog extends Dialog {
 
-    private ImageView red;
-    private ImageView orange;
-    private ImageView yellow;
-    private ImageView green;
-    private ImageView blue;
-    private ImageView purple;
-
     private ColourSelectionListener colourSelectionListener;
 
     public ColourDialog(Context context__) {
         super(context__);
         setContentView(R.layout.colour_dialog);
 
-        red = (ImageView) findViewById(R.id.red);
-        orange = (ImageView) findViewById(R.id.orange);
-        yellow = (ImageView) findViewById(R.id.yellow);
-        green = (ImageView) findViewById(R.id.green);
-        blue = (ImageView) findViewById(R.id.blue);
-        purple = (ImageView) findViewById(R.id.purple);
+        ImageView red = findViewById(R.id.red);
+        ImageView orange = findViewById(R.id.orange);
+        ImageView yellow = findViewById(R.id.yellow);
+        ImageView green = findViewById(R.id.green);
+        ImageView blue = findViewById(R.id.blue);
+        ImageView purple = findViewById(R.id.purple);
 
         red.setOnClickListener(new View.OnClickListener() {
             @Override
