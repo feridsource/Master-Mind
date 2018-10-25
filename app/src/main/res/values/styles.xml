@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:background">@color/white</item>
 
         <item name="android:dialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
     </style>
