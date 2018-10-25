@@ -53,3 +53,9 @@ Temporary Items
 .idea/workspace.xml
 build/android-profile/profile-2018-01-25-10-56-01-741.json
 build/android-profile/profile-2018-01-25-10-56-01-741.rawproto
+.gradle/
+.idea/
+local.properties
+gradle/wrapper/gradle-wrapper.properties
+app/app.iml
+Master-Mind.iml
