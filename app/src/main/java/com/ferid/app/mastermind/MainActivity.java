@@ -44,6 +44,7 @@ import com.ferid.app.mastermind.learn_playing.LearnPlayingActivity;
 import com.ferid.app.mastermind.models.Chance;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Ferid Cafer on 12/17/2015.
@@ -189,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
      * Display the remaining mChance
      */
     private void setRemainingChanceText() {
-        mChanceText.setText(getString(R.string.step) + String.valueOf(mStepNumber) + "/"
-                + getResources().getInteger(R.integer.max_step));
+        mChanceText.setText(String.format(Locale.getDefault(), "%s%d/%d", getString(R.string.step),
+                mStepNumber, getResources().getInteger(R.integer.max_step)));
     }
 
     /**
@@ -318,11 +319,7 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private boolean isGameOver() {
-        if (mChanceList.size() >= getResources().getInteger(R.integer.max_step) || mIsCombinationFound) {
-            return true;
-        } else {
-            return false;
-        }
+        return mChanceList.size() >= getResources().getInteger(R.integer.max_step) || mIsCombinationFound;
     }
 
     private void showMessage(String message) {
@@ -403,8 +400,8 @@ public class MainActivity extends AppCompatActivity {
         if (mNumberOfBlack == getResources().getInteger(R.integer.holes_number)) {
             showMessage(getString(R.string.you_won));
 
-            mChanceText.setText(getString(R.string.you_found_in)
-                    + String.valueOf(mStepNumber) + getString(R.string.steps));
+            mChanceText.setText(String.format(Locale.getDefault(), "%s%d%s",
+                    getString(R.string.you_found_in), mStepNumber, getString(R.string.steps)));
 
             mIsCombinationFound = true;
 
