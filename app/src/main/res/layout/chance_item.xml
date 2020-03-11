@@ -26,28 +26,32 @@
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
             <ImageView
                 android:id="@+id/hole2"
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
             <ImageView
                 android:id="@+id/hole3"
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
             <ImageView
                 android:id="@+id/hole4"
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
         </LinearLayout>
 
@@ -72,14 +76,16 @@
                     android:layout_width="@dimen/result_circle_size"
                     android:layout_height="@dimen/result_circle_size"
                     android:layout_margin="@dimen/result_circle_margin"
-                    android:src="@drawable/circle"/>
+                    android:src="@drawable/circle"
+                    android:contentDescription="@null"/>
 
                 <ImageView
                     android:id="@+id/result2"
                     android:layout_width="@dimen/result_circle_size"
                     android:layout_height="@dimen/result_circle_size"
                     android:layout_margin="@dimen/result_circle_margin"
-                    android:src="@drawable/circle"/>
+                    android:src="@drawable/circle"
+                    android:contentDescription="@null"/>
 
             </TableRow>
 
@@ -93,14 +99,16 @@
                     android:layout_width="@dimen/result_circle_size"
                     android:layout_height="@dimen/result_circle_size"
                     android:layout_margin="@dimen/result_circle_margin"
-                    android:src="@drawable/circle"/>
+                    android:src="@drawable/circle"
+                    android:contentDescription="@null"/>
 
                 <ImageView
                     android:id="@+id/result4"
                     android:layout_width="@dimen/result_circle_size"
                     android:layout_height="@dimen/result_circle_size"
                     android:layout_margin="@dimen/result_circle_margin"
-                    android:src="@drawable/circle"/>
+                    android:src="@drawable/circle"
+                    android:contentDescription="@null"/>
 
             </TableRow>
 

@@ -17,7 +17,7 @@
             android:id="@+id/chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="4dp"
             android:textSize="18sp"
             android:textColor="@color/secondaryTextColor"
@@ -27,7 +27,7 @@
             android:id="@+id/chanceText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="4dp"
             android:textSize="18sp"
             android:textColor="@color/secondaryTextColor"
@@ -57,28 +57,32 @@
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
             <ImageView
                 android:id="@+id/hole2"
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
             <ImageView
                 android:id="@+id/hole3"
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
             <ImageView
                 android:id="@+id/hole4"
                 android:layout_width="@dimen/hole_size"
                 android:layout_height="@dimen/hole_size"
                 android:layout_margin="@dimen/hole_margin"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:contentDescription="@null"/>
 
         </LinearLayout>
 
@@ -95,7 +99,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

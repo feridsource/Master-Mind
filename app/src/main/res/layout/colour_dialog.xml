@@ -16,21 +16,24 @@
             android:layout_width="@dimen/hole_size"
             android:layout_height="@dimen/hole_size"
             android:layout_margin="@dimen/hole_margin"
-            android:src="@drawable/circle_red"/>
+            android:src="@drawable/circle_red"
+            android:contentDescription="@null"/>
 
         <ImageView
             android:id="@+id/orange"
             android:layout_width="@dimen/hole_size"
             android:layout_height="@dimen/hole_size"
             android:layout_margin="@dimen/hole_margin"
-            android:src="@drawable/circle_orange"/>
+            android:src="@drawable/circle_orange"
+            android:contentDescription="@null"/>
 
         <ImageView
             android:id="@+id/yellow"
             android:layout_width="@dimen/hole_size"
             android:layout_height="@dimen/hole_size"
             android:layout_margin="@dimen/hole_margin"
-            android:src="@drawable/circle_yellow"/>
+            android:src="@drawable/circle_yellow"
+            android:contentDescription="@null"/>
 
     </LinearLayout>
 
@@ -45,21 +48,24 @@
             android:layout_width="@dimen/hole_size"
             android:layout_height="@dimen/hole_size"
             android:layout_margin="@dimen/hole_margin"
-            android:src="@drawable/circle_green"/>
+            android:src="@drawable/circle_green"
+            android:contentDescription="@null"/>
 
         <ImageView
             android:id="@+id/blue"
             android:layout_width="@dimen/hole_size"
             android:layout_height="@dimen/hole_size"
             android:layout_margin="@dimen/hole_margin"
-            android:src="@drawable/circle_blue"/>
+            android:src="@drawable/circle_blue"
+            android:contentDescription="@null"/>
 
         <ImageView
             android:id="@+id/purple"
             android:layout_width="@dimen/hole_size"
             android:layout_height="@dimen/hole_size"
             android:layout_margin="@dimen/hole_margin"
-            android:src="@drawable/circle_purple"/>
+            android:src="@drawable/circle_purple"
+            android:contentDescription="@null"/>
 
     </LinearLayout>
 

@@ -82,7 +82,7 @@ public class ColourDialog extends Dialog {
 
     /**
      * Initialise colour selection listener
-     * @param colourSelectionListener
+     * @param colourSelectionListener ColourSelectionListener
      */
     public void setOnColourSelectionListener(ColourSelectionListener colourSelectionListener) {
         this.colourSelectionListener = colourSelectionListener;

@@ -21,12 +21,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,6 +29,11 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ferid.app.mastermind.action_managers.DeviceActionManager;
 import com.ferid.app.mastermind.action_managers.PlayerActionManager;
 import com.ferid.app.mastermind.adapters.ChanceAdapter;
@@ -42,6 +41,8 @@ import com.ferid.app.mastermind.enums.SelectedColour;
 import com.ferid.app.mastermind.interfaces.ColourSelectionListener;
 import com.ferid.app.mastermind.learn_playing.LearnPlayingActivity;
 import com.ferid.app.mastermind.models.Chance;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -209,7 +210,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Paint the hole with the selected colour
-     * @param hole
+     * @param hole ImageView
+     * @param holeNumber int
      */
     private void askForColour(final ImageView hole, final int holeNumber) {
         if (!isGameOver()) {
@@ -235,8 +237,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Empty the selected hole
-     * @param hole
-     * @param holeNumber
+     * @param hole ImageView
+     * @param holeNumber int
      */
     private void setUnselectColour(ImageView hole, int holeNumber) {
         mPlayerActionManager.setHole(holeNumber, null);
@@ -247,9 +249,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Paint colours of selection panel
-     * @param selectedColourValue
-     * @param hole
-     * @param holeNumber Send -1 if you do not want to change the list
+     * @param selectedColourValue int
+     * @param hole ImageView
+     * @param holeNumber int - send -1 if you do not want to change the list
      */
     private void setSelectedColour(int selectedColourValue, ImageView hole, int holeNumber) {
         switch (selectedColourValue) {
@@ -292,6 +294,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initialise recycler view
+     */
     private void initialiseRecyclerView() {
         RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -301,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Is all the holes selected by the player
-     * @return
+     * @return boolean
      */
     private boolean isAllSelected() {
         for (int i = 0; i < mChance.getChanceColourIds().length; i++) {
@@ -316,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Decide if the game is over
-     * @return
+     * @return boolean
      */
     private boolean isGameOver() {
         return mChanceList.size() >= getResources().getInteger(R.integer.max_step) || mIsCombinationFound;
