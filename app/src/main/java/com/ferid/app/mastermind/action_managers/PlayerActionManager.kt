@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package com.ferid.app.mastermind.interfaces;
+package com.ferid.app.mastermind.action_managers
 
-import com.ferid.app.mastermind.enums.SelectedColour;
+import com.ferid.app.mastermind.enums.SelectedColor
 
-/**
- * Created by Ferid Cafer on 12/18/2015.
- */
-public interface ColourSelectionListener {
-    /**
-     *
-     * @param selectedColour
-     */
-    void OnColourSelected(SelectedColour selectedColour);
+class PlayerActionManager {
+    private val holes = arrayOfNulls<SelectedColor>(4)
+
+    fun getHoles(): Array<SelectedColor?>? {
+        return holes
+    }
+
+    fun setHole(index: Int, hole: SelectedColor?) {
+        holes[index] = hole
+    }
+
 }

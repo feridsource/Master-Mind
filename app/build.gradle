@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -25,4 +27,6 @@ dependencies {
     implementation "com.google.android.material:material:1.1.0"
     //androidx
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

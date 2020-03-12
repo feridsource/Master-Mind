@@ -37,12 +37,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ferid.app.mastermind.action_managers.DeviceActionManager;
 import com.ferid.app.mastermind.action_managers.PlayerActionManager;
 import com.ferid.app.mastermind.adapters.ChanceAdapter;
-import com.ferid.app.mastermind.enums.SelectedColour;
-import com.ferid.app.mastermind.interfaces.ColourSelectionListener;
+import com.ferid.app.mastermind.enums.SelectedColor;
+import com.ferid.app.mastermind.interfaces.ColorSelectionListener;
 import com.ferid.app.mastermind.learn_playing.LearnPlayingActivity;
 import com.ferid.app.mastermind.models.Chance;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -215,23 +217,22 @@ public class MainActivity extends AppCompatActivity {
      */
     private void askForColour(final ImageView hole, final int holeNumber) {
         if (!isGameOver()) {
-            ColourDialog colourDialog = new ColourDialog(mContext);
-            colourDialog.setOnColourSelectionListener(new ColourSelectionListener() {
+            ColorDialog colorDialog = new ColorDialog(mContext, new ColorSelectionListener() {
                 @Override
-                public void OnColourSelected(SelectedColour selectedColour) {
-                    mPlayerActionManager.setHole(holeNumber, selectedColour);
+                public void onColorSelected(@NotNull SelectedColor selectedColor) {
+                    mPlayerActionManager.setHole(holeNumber, selectedColor);
 
-                    setSelectedColour(selectedColour.getValue(), hole, holeNumber);
+                    setSelectedColor(selectedColor.getColor(), hole, holeNumber);
                 }
             });
-            colourDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            colorDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
                     //unselect the colour
                     setUnselectColour(hole, holeNumber);
                 }
             });
-            colourDialog.show();
+            colorDialog.show();
         }
     }
 
@@ -244,51 +245,51 @@ public class MainActivity extends AppCompatActivity {
         mPlayerActionManager.setHole(holeNumber, null);
 
         hole.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        mChance.setChanceColourId(holeNumber, R.drawable.circle);
+        mChance.setChanceColorId(holeNumber, R.drawable.circle);
     }
 
     /**
      * Paint colours of selection panel
-     * @param selectedColourValue int
+     * @param selectedColorValue int
      * @param hole ImageView
      * @param holeNumber int - send -1 if you do not want to change the list
      */
-    private void setSelectedColour(int selectedColourValue, ImageView hole, int holeNumber) {
-        switch (selectedColourValue) {
+    private void setSelectedColor(int selectedColorValue, ImageView hole, int holeNumber) {
+        switch (selectedColorValue) {
             case 0:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_red));
                 if (holeNumber >= 0) {
-                    mChance.setChanceColourId(holeNumber, R.drawable.circle_red);
+                    mChance.setChanceColorId(holeNumber, R.drawable.circle_red);
                 }
                 break;
             case 1:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_orange));
                 if (holeNumber >= 0) {
-                    mChance.setChanceColourId(holeNumber, R.drawable.circle_orange);
+                    mChance.setChanceColorId(holeNumber, R.drawable.circle_orange);
                 }
                 break;
             case 2:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_yellow));
                 if (holeNumber >= 0) {
-                    mChance.setChanceColourId(holeNumber, R.drawable.circle_yellow);
+                    mChance.setChanceColorId(holeNumber, R.drawable.circle_yellow);
                 }
                 break;
             case 3:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_green));
                 if (holeNumber >= 0) {
-                    mChance.setChanceColourId(holeNumber, R.drawable.circle_green);
+                    mChance.setChanceColorId(holeNumber, R.drawable.circle_green);
                 }
                 break;
             case 4:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_blue));
                 if (holeNumber >= 0) {
-                    mChance.setChanceColourId(holeNumber, R.drawable.circle_blue);
+                    mChance.setChanceColorId(holeNumber, R.drawable.circle_blue);
                 }
                 break;
             case 5:
                 hole.setImageDrawable(getResources().getDrawable(R.drawable.circle_purple));
                 if (holeNumber >= 0) {
-                    mChance.setChanceColourId(holeNumber, R.drawable.circle_purple);
+                    mChance.setChanceColorId(holeNumber, R.drawable.circle_purple);
                 }
                 break;
         }
@@ -300,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
     private void initialiseRecyclerView() {
         RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mAdapter = new ChanceAdapter(mContext, mChanceList);
+        mAdapter = new ChanceAdapter(mChanceList);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -309,8 +310,8 @@ public class MainActivity extends AppCompatActivity {
      * @return boolean
      */
     private boolean isAllSelected() {
-        for (int i = 0; i < mChance.getChanceColourIds().length; i++) {
-            int selectedColourId = mChance.getChanceColourIds()[i];
+        for (int i = 0; i < mChance.getChanceColorIds().length; i++) {
+            int selectedColourId = mChance.getChanceColorIds()[i];
             if (selectedColourId == R.drawable.circle) {
                 return false;
             }
@@ -342,10 +343,10 @@ public class MainActivity extends AppCompatActivity {
     private void makeDecision() {
         ArrayList<Integer> blackIndices = new ArrayList<>();
         for (int i = 0; i < getResources().getInteger(R.integer.holes_number); i++) {
-            SelectedColour playerSelectedColour = mPlayerActionManager.getHoles()[i];
-            SelectedColour deviceSelectedColour = mDeviceActionManager.getHoles()[i];
+            SelectedColor playerSelectedColor = mPlayerActionManager.getHoles()[i];
+            SelectedColor deviceSelectedColor = mDeviceActionManager.getHoles()[i];
 
-            if (playerSelectedColour == deviceSelectedColour) {
+            if (playerSelectedColor == deviceSelectedColor) {
                 blackIndices.add(i);
 
                 mNumberOfBlack++;
@@ -355,13 +356,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> greyIndices = new ArrayList<>();
         for (int i = 0; i < getResources().getInteger(R.integer.holes_number); i++) {
             if (!blackIndices.contains(i)) {
-                SelectedColour playerSelectedColour = mPlayerActionManager.getHoles()[i];
+                SelectedColor playerSelectedColor = mPlayerActionManager.getHoles()[i];
 
                 for (int j = 0; j < getResources().getInteger(R.integer.holes_number); j++) {
                     if (!blackIndices.contains(j) && !greyIndices.contains(j)) {
-                        SelectedColour deviceSelectedColour = mDeviceActionManager.getHoles()[j];
+                        SelectedColor deviceSelectedColor = mDeviceActionManager.getHoles()[j];
 
-                        if (i != j && playerSelectedColour == deviceSelectedColour) {
+                        if (i != j && playerSelectedColor == deviceSelectedColor) {
                             greyIndices.add(j);
 
                             mNumberOfGrey++;
@@ -385,16 +386,16 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < getResources().getInteger(R.integer.holes_number); i++) {
             if (resultForBlacks > 0) {
-                mChance.setResultColourId(i, R.drawable.circle_black);
+                mChance.setResultColorId(i, R.drawable.circle_black);
 
                 resultForBlacks--;
             } else {
                 if (resultForGreys > 0) {
-                    mChance.setResultColourId(i, R.drawable.circle_grey);
+                    mChance.setResultColorId(i, R.drawable.circle_grey);
 
                     resultForGreys--;
                 } else {
-                    mChance.setResultColourId(i, R.drawable.circle);
+                    mChance.setResultColorId(i, R.drawable.circle);
                 }
             }
         }
@@ -465,11 +466,11 @@ public class MainActivity extends AppCompatActivity {
      * When the game is lost, show the machine's combination
      */
     private void showActualColours() {
-        SelectedColour[] selectedColours = mDeviceActionManager.getHoles();
-        setSelectedColour(selectedColours[0].getValue(), mHole1, -1);
-        setSelectedColour(selectedColours[1].getValue(), mHole2, -1);
-        setSelectedColour(selectedColours[2].getValue(), mHole3, -1);
-        setSelectedColour(selectedColours[3].getValue(), mHole4, -1);
+        SelectedColor[] selectedColors = mDeviceActionManager.getHoles();
+        setSelectedColor(selectedColors[0].getColor(), mHole1, -1);
+        setSelectedColor(selectedColors[1].getColor(), mHole2, -1);
+        setSelectedColor(selectedColors[2].getColor(), mHole3, -1);
+        setSelectedColor(selectedColors[3].getColor(), mHole4, -1);
 
         mChanceText.setText(getString(R.string.machine_combination));
     }

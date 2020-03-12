@@ -14,25 +14,22 @@
  * limitations under the License.
  */
 
-package com.ferid.app.mastermind.action_managers;
+package com.ferid.app.mastermind.action_managers
 
-import com.ferid.app.mastermind.enums.SelectedColour;
+import com.ferid.app.mastermind.enums.SelectedColor
+import java.util.*
 
-/**
- * Created by Ferid Cafer on 12/18/2015.
- */
-public class PlayerActionManager {
-    private SelectedColour[] holes = new SelectedColour[4];
+class DeviceActionManager {
+    private val holes = arrayOfNulls<SelectedColor>(4)
 
-    public PlayerActionManager() {
-
+    init {
+        val random = Random()
+        for (i in holes.indices) {
+            holes[i] = SelectedColor.values()[random.nextInt(6)]
+        }
     }
 
-    public SelectedColour[] getHoles() {
-        return holes;
-    }
-
-    public void setHole(int index, SelectedColour hole) {
-        this.holes[index] = hole;
+    fun getHoles(): Array<SelectedColor?>? {
+        return holes
     }
 }

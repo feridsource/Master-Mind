@@ -14,27 +14,13 @@
  * limitations under the License.
  */
 
-package com.ferid.app.mastermind.action_managers;
+package com.ferid.app.mastermind.interfaces
 
-import com.ferid.app.mastermind.enums.SelectedColour;
+import com.ferid.app.mastermind.enums.SelectedColor
 
-import java.util.Random;
-
-/**
- * Created by Ferid Cafer on 12/18/2015.
- */
-public class DeviceActionManager {
-    private SelectedColour[] holes = new SelectedColour[4];
-
-    public DeviceActionManager() {
-        Random random = new Random();
-        for (int i = 0; i < holes.length; i++) {
-            holes[i] = SelectedColour.values()[random.nextInt(6)];
-        }
-    }
-
-    public SelectedColour[] getHoles() {
-        return holes;
-    }
-
+interface ColorSelectionListener {
+    /**
+     * On color selection
+     */
+    fun onColorSelected(selectedColor: SelectedColor)
 }

@@ -14,25 +14,20 @@
  * limitations under the License.
  */
 
-package com.ferid.app.mastermind.enums;
+package com.ferid.app.mastermind.models
 
-/**
- * Created by Ferid Cafer on 12/18/2015.
- */
-public enum SelectedColour {
-    RED(0),
-    ORANGE(1),
-    YELLOW(2),
-    GREEN(3),
-    BLUE(4),
-    PURPLE(5);
+import com.ferid.app.mastermind.R
 
-    private final int value;
+class Chance {
+    val chanceColorIds = IntArray(4) {R.drawable.circle}
+    val resultColorIds = IntArray(4) {R.drawable.circle}
 
-    SelectedColour(int value) {
-        this.value = value;
+    fun setChanceColorId(index: Int, colorId: Int) {
+        chanceColorIds[index] = colorId
     }
-    public int getValue() {
-        return value;
+
+    fun setResultColorId(index: Int, colorId: Int) {
+        resultColorIds[index] = colorId
     }
+
 }
