@@ -17,7 +17,6 @@
 package com.ferid.app.mastermind
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -153,12 +152,9 @@ class MainActivity : AppCompatActivity() {
                     selectColor(selectedColor.color, hole, holeNumber)
                 }
             })
-            colorDialog.setOnCancelListener(object: DialogInterface.OnCancelListener {
-                override fun onCancel(dialog: DialogInterface?) {
-                    //deselect the colour
-                    deselectColor(hole, holeNumber)
-                }
-            })
+            colorDialog.setOnCancelListener { //deselect the colour
+                deselectColor(hole, holeNumber)
+            }
             colorDialog.show()
         }
     }
@@ -310,7 +306,7 @@ class MainActivity : AppCompatActivity() {
 
                         mNumberOfGrey++
 
-                        break;
+                        break
                     }
                 }
             }
@@ -393,6 +389,9 @@ class MainActivity : AppCompatActivity() {
             builder.addDefaultShareMenuItem() //add share action to menu list
             builder.setShowTitle(true)
             builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+            //set animations
+            builder.setStartAnimations(this, R.anim.move_in_from_bottom, R.anim.stand_still)
+            builder.setExitAnimations(this, R.anim.stand_still, R.anim.move_out_to_bottom)
             //launch chrome tab
             val customTabsIntent = builder.build()
             customTabsIntent.launchUrl(this, Uri.parse(url))

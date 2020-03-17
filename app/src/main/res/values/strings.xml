@@ -11,7 +11,4 @@
     <string name="you_found_in">You\'ve found in&#160;</string>
     <string name="steps">&#160;steps</string>
     <string name="step">Step:&#160;</string>
-
-    <string name="loading">Loading</string>
-    <string name="process_ongoing">The process is ongoing</string>
 </resources>
