@@ -13,7 +13,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
             android:resizeableActivity="false">
 
             <intent-filter>
@@ -23,11 +22,6 @@
             </intent-filter>
 
         </activity>
-
-        <activity
-            android:name=".learn_playing.LearnPlayingActivity"
-            android:screenOrientation="portrait"
-            android:resizeableActivity="false"/>
 
     </application>
 

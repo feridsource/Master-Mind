@@ -18,12 +18,15 @@ package com.ferid.app.mastermind
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ferid.app.mastermind.action_managers.DeviceActionManager
@@ -78,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         buttonHowToPlay.setOnClickListener{
-            //todo chrome tab
+            openTutorial()
         }
         buttonNewGame.setOnClickListener{setNewGame()}
     }
@@ -377,6 +380,27 @@ class MainActivity : AppCompatActivity() {
         selectColor(selectedColors[3]!!.color, hole4, -1)
 
         chanceText.text = resources.getString(R.string.machine_combination)
+    }
+
+    /**
+     * Open how to play tutorial in chrome tab
+     */
+    private fun openTutorial() {
+        val url = "http://www.industrious.com/mastermind/gamerules.html"
+
+        try { //open custom tab
+            val builder = CustomTabsIntent.Builder()
+            builder.addDefaultShareMenuItem() //add share action to menu list
+            builder.setShowTitle(true)
+            builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+            //launch chrome tab
+            val customTabsIntent = builder.build()
+            customTabsIntent.launchUrl(this, Uri.parse(url))
+        } catch (e: Exception) { //open browser if tab is not supported
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
     }
 
     /**

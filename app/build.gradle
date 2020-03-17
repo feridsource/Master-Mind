@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
+    buildToolsVersion = '29.0.3'
 
     defaultConfig {
         applicationId "com.ferid.app.mastermind"
@@ -19,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
 }
 
 dependencies {
@@ -29,4 +35,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //chrome tab
+    implementation 'androidx.browser:browser:1.2.0'
 }
