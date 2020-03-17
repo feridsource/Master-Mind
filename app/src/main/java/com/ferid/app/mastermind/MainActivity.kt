@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private var mAdapter: ChanceAdapter? = null
 
     private var mChance: Chance? = null
-    private var mStepNumber: Int = -1
+    private var mStepNumber: Int = 1
     private var mIsCombinationFound = false //is the game won
 
     //game mChance decision
@@ -264,7 +264,7 @@ class MainActivity : AppCompatActivity() {
         initActionManagers()
 
         mIsCombinationFound = false
-        mStepNumber = -1
+        mStepNumber = 1
 
         mChanceList!!.clear()
         mAdapter!!.notifyDataSetChanged()
@@ -299,14 +299,16 @@ class MainActivity : AppCompatActivity() {
                 val playerSelectedColor = mPlayerActionManager!!.getHoles()!![i]
 
                 for (j in 0 until resources.getInteger(R.integer.holes_number)) {
-                    val deviceSelectedColor = mDeviceActionManager!!.getHoles()!![j]
+                    if (!blackIndices.contains(j) && !greyIndices.contains(j)) {
+                        val deviceSelectedColor = mDeviceActionManager!!.getHoles()!![j]
 
-                    if (i != j && playerSelectedColor == deviceSelectedColor) {
-                        greyIndices.add(j)
+                        if (i != j && playerSelectedColor == deviceSelectedColor) {
+                            greyIndices.add(j)
 
-                        mNumberOfGrey++
+                            mNumberOfGrey++
 
-                        break
+                            break
+                        }
                     }
                 }
             }

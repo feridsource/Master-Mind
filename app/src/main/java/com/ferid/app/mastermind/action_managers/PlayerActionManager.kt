@@ -28,5 +28,4 @@ class PlayerActionManager {
     fun setHole(index: Int, hole: SelectedColor?) {
         holes[index] = hole
     }
-
 }

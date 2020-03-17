@@ -29,5 +29,4 @@ class Chance {
     fun setResultColorId(index: Int, colorId: Int) {
         resultColorIds[index] = colorId
     }
-
 }

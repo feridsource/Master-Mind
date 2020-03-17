@@ -50,5 +50,4 @@ class ColorDialog(context: Context, colorSelectionListener: ColorSelectionListen
 
         dismiss()
     }
-
 }
